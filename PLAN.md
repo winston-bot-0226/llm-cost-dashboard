@@ -1,6 +1,6 @@
 # LLM Cost Dashboard — Projektplan
 
-> **Status:** 📝 Draft — Wartet auf Review
+> **Status:** 🚧 In Progress — Phase 1 Complete
 > **Erstellt:** 2026-02-04
 > **Autor:** Winston (AI Assistant)
 
@@ -223,11 +223,11 @@ model Alert {
 
 ### Phase 1: Setup (Tag 1)
 - [x] GitHub Repo erstellen
-- [ ] Plan schreiben und Review
-- [ ] Next.js Projekt initialisieren
-- [ ] Docker Compose Setup (App + PostgreSQL)
-- [ ] Prisma Schema + Migration
-- [ ] Basic UI Layout
+- [x] Plan schreiben und Review
+- [x] Next.js Projekt initialisieren
+- [x] Docker Compose Setup (App + PostgreSQL)
+- [x] Prisma Schema + Migration
+- [x] Basic UI Layout
 
 ### Phase 2: Core Features (Tag 2-3)
 - [ ] Provider API Integration (OpenAI zuerst)
