@@ -1,0 +1,53 @@
+// Prisma Schema for LLM Cost Dashboard
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Provider {
+  id          String   @id @default(cuid())
+  name        String   @unique // "openai", "anthropic", etc.
+  displayName String // "OpenAI", "Anthropic", etc.
+  enabled     Boolean  @default(true)
+  costs       Cost[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Cost {
+  id         String   @id @default(cuid())
+  providerId String
+  provider   Provider @relation(fields: [providerId], references: [id])
+  amount     Decimal  @db.Decimal(10, 4)
+  currency   String   @default("USD")
+  date       DateTime @db.Date
+  month      String // "2026-02" for easy grouping
+  raw        Json? // Original API Response
+  createdAt  DateTime @default(now())
+
+  @@unique([providerId, date])
+  @@index([month])
+}
+
+model Budget {
+  id        String   @id @default(cuid())
+  month     String   @unique // "2026-02"
+  amount    Decimal  @db.Decimal(10, 2)
+  currency  String   @default("USD")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Alert {
+  id        String   @id @default(cuid())
+  type      String // "budget_warning", "budget_exceeded"
+  message   String
+  threshold Int // percentage (e.g., 80, 100)
+  triggered DateTime
+  dismissed Boolean  @default(false)
+}
