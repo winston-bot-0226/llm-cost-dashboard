@@ -54,7 +54,7 @@ Ein zentrales Dashboard das:
 
 ### Ports
 - **Frontend:** `3847` (nicht-standard, vermeidet Konflikte)
-- **PostgreSQL:** `5433` (standard ist 5432)
+- **PostgreSQL:** `5487` (weit weg vom Standard 5432)
 
 ---
 
@@ -85,7 +85,7 @@ Ein zentrales Dashboard das:
           │
 ┌─────────▼───────┐
 │   PostgreSQL    │
-│   :5433         │
+│   :5487         │
 └─────────────────┘
 ```
 
@@ -141,7 +141,7 @@ Erstelle `.env.local` im Projekt-Root (wird nicht committed):
 
 ```bash
 # Database
-DATABASE_URL="postgresql://postgres:password@localhost:5433/llm_costs"
+DATABASE_URL="postgresql://postgres:password@localhost:5487/llm_costs"
 
 # OpenAI
 OPENAI_API_KEY="sk-..."
